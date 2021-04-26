@@ -1,0 +1,66 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+/ {
+	keymap {
+		compatible = "zmk,keymap";
+
+		default_layer {
+				// -------------------------------------------------------------------------------------------------------------------------
+				// | ESC     | Q       | W       | E       | R       | T       | Y       | U       | I       | O       | P       | BSPACE  |
+				// | TAB     | A       | S       | D       | F       | G       | H       | J       | K       | L       | ;       | '       |
+				// | SHIFT   | Z       | X       | C       | V       | B       | N       | M       | ,       | .       | UARW    | /       |
+				// | LCTRL   | LGUI    | HYPER   | LALT    | SPACE   | SHIFT   | LOWER   | RETURN  | RAISE   | LARW    | DARW    | RARW    |
+			bindings = <
+				    &kp ESC   &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
+				    &kp TAB   &kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+				    &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp COMMA &kp DOT   &kp UP    &kp BSLH
+				    &kp LCTRL &kp LGUI  &mo 3     &kp LALT  &kp SPACE &kp LSHFT &mo 1     &kp RET   &mo 2     &kp LEFT  &kp DOWN  &kp RIGHT
+			>;
+		};
+
+		lower {
+                // -------------------------------------------------------------------------------------------------------------------------
+				// | ESC     |         |         | UARW    | \       | %       | ^       | (       | )       | [       | ]       | DEL     |
+				// | TAB     | 	       | LARW    | DARW    | RARW    | $       | &       | {       | }       | |       | =       | _       |
+				// | SHIFT   | CAPS    | `       | ~       | #       | £       | *       | @       | <       | >       | UARW    | !       |
+				// | LCTRL   | LGUI    | 	     | LALT    | SPACE   | SHIFT   | 	     | RETURN  |         | LARW    | DARW    | RARW    |
+			bindings = <
+					&kp ESC   &none     &none     &kp UP    &kp BSLH  &kp PRCNT &kp CARET &kp LPAR  &kp RPAR  &kp LBKT  &kp RBKT  &kp DEL
+				    &kp TAB   &none     &kp LEFT  &kp DOWN  &kp RIGHT &kp DLLR  &kp AMPS  &kp LBRC  &kp RBRC  &kp PIPE  &kp EQUAL &kp UNDER
+				    &kp LSHFT &kp CAPS  &kp GRAVE &kp TILDE &kp HASH  &kp LS(N3) &kp STAR &kp AT    &kp LT    &kp GT    &kp UP    &kp EXCL
+				    &kp LCTRL &kp LGUI  &none     &kp LALT  &kp SPACE &kp LSHFT &none     &kp RET   &none     &kp LEFT  &kp DOWN  &kp RIGHT
+			>;
+		};
+
+		raise {
+                // -------------------------------------------------------------------------------------------------------------------------
+				// | ESC     | 1       | 2       | 3       | 4       | 5       | 6       | 7       | 8       | 9       | 0       | DEL     |
+				// | TAB     |         |         | HOME    | PGUP    |         | -       | 4       | 5       | 6       |         |         |
+				// | SHIFT   |         |         | END     | PGDN    |         | +       | 1       | 2       | 3       | UARW    |         |
+				// | LCTRL   | LGUI    |         | LALT    | SPACE   | SHIFT   | 	     | RETURN  |         | LARW    | DARW    | RARW    |
+			bindings = <
+					&kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp DEL
+				    &kp TAB   &none     &none     &kp HOME  &kp PG_UP &none     &kp MINUS &kp N4    &kp N5    &kp N6    &none     &none
+				    &kp LSHFT &none     &none     &kp END   &kp PG_DN &none     &kp PLUS  &kp N1    &kp N2    &kp N3    &kp UP    &none
+				    &kp LCTRL &kp LGUI  &none     &kp LALT  &kp SPACE &kp LSHFT &none     &kp RET   &none     &kp LEFT  &kp DOWN  &kp RIGHT
+			>;
+		};
+
+		hyper {
+                // -------------------------------------------------------------------------------------------------------------------------
+				// | BLCLR   | BL1     | BL2     | BL3     | BL4     | BL5     |         | F7      | F8      | F9      | F10     |         |
+				// | TAB     |         |         |         |         |         |         | F4      | F5      | F6      | F11     | RESET   |
+				// | SHIFT   |         |         |         |         |         |         | F1      | F2      | F3      | F12     | BOOTLD  |
+				// | LCTRL   | LGUI    |         | LALT    | SPACE   | SHIFT   | 	     | RETURN  |         |         |         |         |
+			bindings = <
+					&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none &kp F7 &kp F8 &kp F9 &kp F10 &none
+				    &kp TAB   &none     &none     &kp HOME  &kp PG_UP &none     &none     &kp F4    &kp F5    &kp F6    &kp F11   &reset
+				    &kp LSHFT &none     &none     &kp END   &kp PG_DN &none     &none     &kp F1    &kp F2    &kp F3    &kp F12   &bootloader
+				    &kp LCTRL &kp LGUI  &none     &kp LALT  &kp SPACE &kp LSHFT &none     &kp RET   &none     &none     &none     &kp none
+			>;
+		};
+		
+	};
+};
