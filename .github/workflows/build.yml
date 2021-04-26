@@ -33,17 +33,17 @@ jobs:
         run: west update
       - name: West Zephyr export
         run: west zephyr-export
-      - name: West Build (PLANCK)
-        run: west build -s zmk/app -b nice_nano -- -DSHIELD=planck -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: PLANCK DTS File
+      - name: West Build (CRBN)
+        run: west build -s zmk/app -b nice_nano -- -DSHIELD=crbn -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: CRBN DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/nice_nano.dts.pre.tmp
-      - name: PLANCK Kconfig file
+      - name: CRBN Kconfig file
         run: cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
       - name: Rename zmk.uf2
-        run: cp build/zephyr/zmk.uf2 planck_nice_nano.uf2
-      - name: Archive (PLANCK)
+        run: cp build/zephyr/zmk.uf2 crbn_nice_nano.uf2
+      - name: Archive (CRBN)
         uses: actions/upload-artifact@v2
         with:
           name: firmware
-          path: planck_nice_nano.uf2
+          path: crbn_nice_nano.uf2
